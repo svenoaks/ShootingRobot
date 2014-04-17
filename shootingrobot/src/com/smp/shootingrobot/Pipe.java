@@ -5,73 +5,36 @@ import java.util.Random;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Pipe extends Scrollable
-{
+public class Pipe extends Scrollable {
+
 	private Random r;
 
 	private Rectangle skullUp, skullDown, barUp, barDown;
 
-	private float groundY;
-
 	public static final int VERTICAL_GAP = 45;
 	public static final int SKULL_WIDTH = 24;
 	public static final int SKULL_HEIGHT = 11;
-	
-	private boolean isScored;
+	private float groundY;
 
-	public Pipe(float x, float y, int width, int height, float scrollSpeed, float groundY)
-	{
+	private boolean isScored = false;
+
+	// When Pipe's constructor is invoked, invoke the super (Scrollable)
+	// constructor
+	public Pipe(float x, float y, int width, int height, float scrollSpeed,
+			float groundY) {
 		super(x, y, width, height, scrollSpeed);
+		// Initialize a Random object for Random number generation
 		r = new Random();
-
 		skullUp = new Rectangle();
 		skullDown = new Rectangle();
 		barUp = new Rectangle();
 		barDown = new Rectangle();
+
 		this.groundY = groundY;
 	}
 
 	@Override
-	public void reset(float newX)
-	{
-		// Call the reset method in the superclass (Scrollable)
-		super.reset(newX);
-		// Change the height to a random number
-		height = r.nextInt(90) + 15;
-		isScored = false;
-	}
-
-	public Rectangle getSkullUp()
-	{
-		return skullUp;
-	}
-
-	public Rectangle getSkullDown()
-	{
-		return skullDown;
-	}
-
-	public Rectangle getBarUp()
-	{
-		return barUp;
-	}
-
-	public Rectangle getBarDown()
-	{
-		return barDown;
-	}
-	
-	public boolean isScored() {
-	    return isScored;
-	}
-
-	public void setScored(boolean b) {
-	    isScored = b;
-	}
-
-	@Override
-	public void update(float delta)
-	{
+	public void update(float delta) {
 		// Call the update method in the superclass (Scrollable)
 		super.update(delta);
 
@@ -95,10 +58,38 @@ public class Pipe extends Scrollable
 
 	}
 
-	public boolean collides(Bird bird)
-	{
-		if (position.x < bird.getX() + bird.getWidth())
-		{
+	@Override
+	public void reset(float newX) {
+		// Call the reset method in the superclass (Scrollable)
+		super.reset(newX);
+		// Change the height to a random number
+		height = r.nextInt(90) + 15;
+		isScored = false;
+	}
+
+	public void onRestart(float x, float scrollSpeed) {
+		velocity.x = scrollSpeed;
+		reset(x);
+	}
+
+	public Rectangle getSkullUp() {
+		return skullUp;
+	}
+
+	public Rectangle getSkullDown() {
+		return skullDown;
+	}
+
+	public Rectangle getBarUp() {
+		return barUp;
+	}
+
+	public Rectangle getBarDown() {
+		return barDown;
+	}
+
+	public boolean collides(Bird bird) {
+		if (position.x < bird.getX() + bird.getWidth()) {
 			return (Intersector.overlaps(bird.getBoundingCircle(), barUp)
 					|| Intersector.overlaps(bird.getBoundingCircle(), barDown)
 					|| Intersector.overlaps(bird.getBoundingCircle(), skullUp) || Intersector
@@ -107,9 +98,11 @@ public class Pipe extends Scrollable
 		return false;
 	}
 
-	public void onRestart(float x, float scrollSpeed)
-	{
-		velocity.x = scrollSpeed;
-		reset(x);
+	public boolean isScored() {
+		return isScored;
+	}
+
+	public void setScored(boolean b) {
+		isScored = b;
 	}
 }

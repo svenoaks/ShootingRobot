@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 9 elements from project &apos;shootingrobot-android&apos;&#x0A;- Original project: &apos;shootingrobot-android&apos;&#x0A;- Original elements:&#x0A;     coin.wav&#x0A;     dead.wav&#x0A;     flap.wav&#x0A;     libgdx.png&#x0A;     shadow.fnt&#x0A;     shadow.png&#x0A;     text.fnt&#x0A;     text.png&#x0A;     texture.png" description="Delete elements" element1="assets/data/flap.wav" element2="assets/data/text.png" element3="assets/data/texture.png" element4="assets/data/libgdx.png" element5="assets/data/dead.wav" element6="assets/data/text.fnt" element7="assets/data/shadow.fnt" element8="assets/data/coin.wav" element9="assets/data/shadow.png" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="9" stamp="1397695463530" subPackages="false" version="1.0"/>
+</session>

@@ -2,16 +2,17 @@ package com.smp.shootingrobot;
 
 import com.badlogic.gdx.math.Vector2;
 
-public class Scrollable
-{
+public class Scrollable {
+	
+	
+	// Protected is similar to private, but allows inheritance by subclasses.
 	protected Vector2 position;
 	protected Vector2 velocity;
 	protected int width;
 	protected int height;
 	protected boolean isScrolledLeft;
 
-	public Scrollable(float x, float y, int width, int height, float scrollSpeed)
-	{
+	public Scrollable(float x, float y, int width, int height, float scrollSpeed) {
 		position = new Vector2(x, y);
 		velocity = new Vector2(scrollSpeed, 0);
 		this.width = width;
@@ -19,57 +20,48 @@ public class Scrollable
 		isScrolledLeft = false;
 	}
 
-	public void update(float delta)
-	{
+	public void update(float delta) {
 		position.add(velocity.cpy().scl(delta));
 
 		// If the Scrollable object is no longer visible:
-		if (position.x + width < 0)
-		{
+		if (position.x + width < 0) {
 			isScrolledLeft = true;
 		}
 	}
 
 	// Reset: Should Override in subclass for more specific behavior.
-	public void reset(float newX)
-	{
+	public void reset(float newX) {
 		position.x = newX;
 		isScrolledLeft = false;
 	}
 
-	public void stop()
-	{
+	public void stop() {
 		velocity.x = 0;
 	}
-
+	
 	// Getters for instance variables
-	public boolean isScrolledLeft()
-	{
+	public boolean isScrolledLeft() {
 		return isScrolledLeft;
 	}
 
-	public float getTailX()
-	{
+	public float getTailX() {
 		return position.x + width;
 	}
 
-	public float getX()
-	{
+	public float getX() {
 		return position.x;
 	}
 
-	public float getY()
-	{
+	public float getY() {
 		return position.y;
 	}
 
-	public int getWidth()
-	{
+	public int getWidth() {
 		return width;
 	}
 
-	public int getHeight()
-	{
+	public int getHeight() {
 		return height;
 	}
+
 }

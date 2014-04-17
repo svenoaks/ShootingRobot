@@ -1,0 +1,20 @@
+package com.smp.shootingrobot;
+
+import com.badlogic.gdx.Gdx;
+
+public class Constants
+{
+	public static float DIMENSION_GAME_HEIGHT;
+	public static float DIMENSION_GAME_WIDTH;
+	
+	static
+	{
+		DIMENSION_GAME_WIDTH = 136;
+		
+		float screenWidth = Gdx.graphics.getWidth();
+		float screenHeight = Gdx.graphics.getHeight();
+		
+		DIMENSION_GAME_HEIGHT = screenHeight / (screenWidth / DIMENSION_GAME_WIDTH);
+	}
+	
+}

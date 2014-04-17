@@ -1,0 +1,59 @@
+package com.smp.shootingrobot;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import static com.smp.shootingrobot.Constants.*;
+
+
+public class GameScreen implements Screen {
+
+	private GameWorld world;
+	private GameRenderer renderer;
+	private float runTime;
+
+	// This is the constructor, not the class declaration
+	public GameScreen() {
+
+		float screenWidth = Gdx.graphics.getWidth();
+		float screenHeight = Gdx.graphics.getHeight();
+		
+		int midPointY = (int) (DIMENSION_GAME_HEIGHT / 2);
+
+		world = new GameWorld(midPointY);
+		Gdx.input.setInputProcessor(new InputHandler(world, screenWidth / DIMENSION_GAME_WIDTH, screenHeight / DIMENSION_GAME_HEIGHT));
+		renderer = new GameRenderer(world, midPointY);
+		world.setRenderer(renderer);
+	}
+
+	@Override
+	public void render(float delta) {
+		runTime += delta;
+		world.update(delta);
+		renderer.render(delta, runTime);
+	}
+
+	@Override
+	public void resize(int width, int height) {
+	}
+
+	@Override
+	public void show() {
+	}
+
+	@Override
+	public void hide() {
+	}
+
+	@Override
+	public void pause() {
+	}
+
+	@Override
+	public void resume() {
+	}
+
+	@Override
+	public void dispose() {
+	}
+
+}

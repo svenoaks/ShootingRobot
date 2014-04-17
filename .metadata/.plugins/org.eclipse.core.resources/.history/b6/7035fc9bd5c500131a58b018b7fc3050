@@ -1,0 +1,25 @@
+package com.smp.shootingrobot;
+
+import com.badlogic.gdx.Gdx;
+
+public class Constants
+{
+	public static final float DIMENSION_SCREEN_WIDTH;
+	public static final float DIMENSION_SCREEN_HEIGHT;
+	public static final float DIMENSION_GAME_WIDTH;
+	public static final float DIMENSION_GAME_HEIGHT;
+	
+	public static int COORDINATE_MIDPOINT_Y;
+	
+	static
+	{
+		DIMENSION_GAME_WIDTH = 136;
+		
+		float screenWidth = Gdx.graphics.getWidth();
+		float screenHeight = Gdx.graphics.getHeight();
+		
+		DIMENSION_GAME_HEIGHT = screenHeight / (screenWidth / DIMENSION_GAME_WIDTH);
+		COORDINATE_MIDPOINT_Y = (int) (DIMENSION_GAME_HEIGHT / 2) ;
+	}
+	
+}
