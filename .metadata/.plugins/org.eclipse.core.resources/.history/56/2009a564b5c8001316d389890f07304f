@@ -1,0 +1,13 @@
+package com.smp.shootingrobot;
+
+public class PlayerShot extends BaseShot
+{
+	private static final float DIMENSION_WIDTH = 20;
+	private static final float DIMENSION_HEIGHT = 20;
+
+	public PlayerShot()
+	{
+		width = DIMENSION_WIDTH;
+		height = DIMENSION_HEIGHT;
+	}
+}

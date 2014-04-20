@@ -48,6 +48,7 @@ public class SplashScreen implements Screen {
 			@Override
 			public void onEvent(int type, BaseTween<?> source) {
 				game.setScreen(new GameScreen());
+				SplashScreen.this.dispose();
 			}
 		};
 

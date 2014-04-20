@@ -20,7 +20,7 @@ public class Pipe extends Scrollable {
 
 	// When Pipe's constructor is invoked, invoke the super (Scrollable)
 	// constructor
-	public Pipe(float x, float y, int width, int height, float scrollSpeed,
+	public Pipe(float x, float y, float width, float height, float scrollSpeed,
 			float groundY) {
 		super(x, y, width, height, scrollSpeed);
 		// Initialize a Random object for Random number generation
@@ -88,7 +88,7 @@ public class Pipe extends Scrollable {
 		return barDown;
 	}
 
-	public boolean collides(Bird bird) {
+	public boolean collides(Robot bird) {
 		if (position.x < bird.getX() + bird.getWidth()) {
 			return (Intersector.overlaps(bird.getBoundingCircle(), barUp)
 					|| Intersector.overlaps(bird.getBoundingCircle(), barDown)

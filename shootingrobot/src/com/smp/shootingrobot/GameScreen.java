@@ -2,17 +2,19 @@ package com.smp.shootingrobot;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import static com.smp.shootingrobot.Constants.*;
+import com.badlogic.gdx.math.Rectangle;
 
 
 public class GameScreen implements Screen {
 
-	public static final float DIMENSION_SCREEN_WIDTH;
-	public static final float DIMENSION_SCREEN_HEIGHT;
-	public static final float DIMENSION_GAME_WIDTH;
-	public static final float DIMENSION_GAME_HEIGHT;
+	private static final float DIMENSION_SCREEN_WIDTH;
+	private static final float DIMENSION_SCREEN_HEIGHT;
+	private static final float DIMENSION_GAME_WIDTH;
+	private static final float DIMENSION_GAME_HEIGHT;
 	
-	public static final int COORDINATE_MIDPOINT_Y;
+	private static final int COORDINATE_MIDPOINT_Y;
+	
+	private static final Rectangle SHAPE_GAME_RECTANGLE;
 	
 	static
 	{
@@ -24,7 +26,9 @@ public class GameScreen implements Screen {
 		DIMENSION_GAME_HEIGHT = DIMENSION_SCREEN_HEIGHT / 
 				(DIMENSION_SCREEN_WIDTH / DIMENSION_GAME_WIDTH);
 		
-		COORDINATE_MIDPOINT_Y = (int) (DIMENSION_GAME_HEIGHT / 2) ;
+		COORDINATE_MIDPOINT_Y = (int) (DIMENSION_GAME_HEIGHT / 2);
+		
+		SHAPE_GAME_RECTANGLE = new Rectangle(0 ,0, DIMENSION_GAME_WIDTH, DIMENSION_GAME_HEIGHT);
 	}
 	
 	private GameWorld world;
@@ -37,7 +41,7 @@ public class GameScreen implements Screen {
 		float screenWidth = Gdx.graphics.getWidth();
 		float screenHeight = Gdx.graphics.getHeight();
 
-		world = new GameWorld(COORDINATE_MIDPOINT_Y);
+		world = new GameWorld(COORDINATE_MIDPOINT_Y, SHAPE_GAME_RECTANGLE);
 		Gdx.input.setInputProcessor(new InputHandler(world, DIMENSION_GAME_WIDTH, 
 				screenWidth / DIMENSION_GAME_WIDTH, 
 				screenHeight / DIMENSION_GAME_HEIGHT));

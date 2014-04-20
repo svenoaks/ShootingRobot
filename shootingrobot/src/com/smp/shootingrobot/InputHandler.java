@@ -8,7 +8,7 @@ import com.badlogic.gdx.InputProcessor;
 
 public class InputHandler implements InputProcessor
 {
-	private Bird bird;
+	private Robot bird;
 	private GameWorld world;
 
 	private List<SimpleButton> menuButtons;
@@ -52,14 +52,14 @@ public class InputHandler implements InputProcessor
 		else if (world.isReady())
 		{
 			world.start();
-			bird.onClick();
+			bird.flap();
 		}
 		else if (world.isRunning())
 		{
 			if (screenX < gameWidth / 2)
-				bird.onClick();
+				bird.flap();
 			else
-				AssetLoader.dead.play();
+				world.addPlayerShot();
 		}
 
 		if (world.isGameOver() || world.isHighScore())
@@ -110,11 +110,8 @@ public class InputHandler implements InputProcessor
 			}
 			else
 			{
-				bird.onClick();
+				bird.flap();
 			}
-
-			
-
 		}
 
 		return false;

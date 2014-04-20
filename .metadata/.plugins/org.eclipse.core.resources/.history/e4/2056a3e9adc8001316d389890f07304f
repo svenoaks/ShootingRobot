@@ -1,0 +1,6 @@
+package com.smp.shootingrobot;
+
+public class BirdShot extends BaseShot
+{
+
+}

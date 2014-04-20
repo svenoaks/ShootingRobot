@@ -1,0 +1,22 @@
+package com.smp.shootingrobot;
+
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Pool;
+
+public class GameObjectRemover
+{
+	public static <T extends GameObject> void removeOutOfBounds (Pool<T> pool, Array<T> gos, Rectangle bounds) {
+		float minX = bounds.x;
+		float maxX = minX + bounds.width;
+		float minY = bounds.y;
+		float maxY = minY + bounds.height;
+		for (int i = gos.size - 1; i >= 0; i--) {
+			T go = gos.get(i);
+			if (go.position.x >= maxX || go.position.x + go.width <= minX || go.position.y >= maxY || go.position.y + go.height <= minY) {
+				gos.removeIndex(i);
+				pool.free(go);
+			}
+		}
+	}
+}

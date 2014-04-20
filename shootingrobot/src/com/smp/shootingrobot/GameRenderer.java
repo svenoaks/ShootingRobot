@@ -15,7 +15,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import static com.smp.shootingrobot.Constants.*;
 
 public class GameRenderer {
 
@@ -26,7 +25,7 @@ public class GameRenderer {
 	private SpriteBatch batcher;
 
 	// Game Objects
-	private Bird bird;
+	private Robot bird;
 	private ScrollHandler scroller;
 	private Grass frontGrass, backGrass;
 	private Pipe pipe1, pipe2, pipe3;
@@ -147,6 +146,16 @@ public class GameRenderer {
 		batcher.draw(birdAnimation.getKeyFrame(runTime), 59, bird.getY() - 15,
 				bird.getWidth() / 2.0f, bird.getHeight() / 2.0f,
 				bird.getWidth(), bird.getHeight(), 1, 1, bird.getRotation());
+	}
+
+	private void drawShots()
+	{
+		for (PlayerShot shot : world.getPlayerShots())
+		{
+			batcher.draw(birdMid, shot.getX(), shot.getY(),
+					shot.getWidth() / 2.0f, shot.getHeight() / 2.0f,
+					shot.getWidth(), shot.getHeight(), 1, 1, shot.getRotation());
+		}
 	}
 
 	private void drawBird(float runTime) {
@@ -292,7 +301,7 @@ public class GameRenderer {
 		}
 
 		drawGrass();
-
+		drawShots();
 		batcher.end();
 		drawTransition(delta);
 

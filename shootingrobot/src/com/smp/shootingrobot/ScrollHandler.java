@@ -75,7 +75,7 @@ public class ScrollHandler {
 		pipe3.stop();
 	}
 
-	public boolean collides(Bird bird) {
+	public boolean collides(Robot bird) {
 
 		if (!pipe1.isScored()
 				&& pipe1.getX() + (pipe1.getWidth() / 2) < bird.getX()

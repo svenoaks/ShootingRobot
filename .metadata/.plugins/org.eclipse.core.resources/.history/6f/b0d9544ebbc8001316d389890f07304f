@@ -1,0 +1,26 @@
+package com.smp.shootingrobot;
+
+public class PlayerShot extends BaseShot
+{
+	private static final float DIMENSION_WIDTH = 10;
+	private static final float DIMENSION_HEIGHT = 8;
+	
+	private static final float VECTOR_MAGNITUDE = 100;
+	
+	public PlayerShot()
+	{
+		width = DIMENSION_WIDTH;
+		height = DIMENSION_HEIGHT;
+	}
+	
+	public void setVelocity(float rotation)
+	{
+		float absRotation = Math.abs(rotation);
+		
+		velocity.x = (float) Math.cos(absRotation * VECTOR_MAGNITUDE);
+		velocity.y = (float) Math.sin(absRotation * VECTOR_MAGNITUDE);
+		
+		if (rotation < 0) 
+			velocity.y = -velocity.y;
+	}
+}
